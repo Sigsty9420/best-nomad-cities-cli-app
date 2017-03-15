@@ -3,7 +3,6 @@ class BestNomadCities::City
 
   @@all = []
 
-
   def self.new_from_home_page(city)
     self.new(
     city.css("h2").text,

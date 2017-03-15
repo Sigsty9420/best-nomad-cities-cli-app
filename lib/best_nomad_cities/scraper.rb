@@ -1,18 +1,16 @@
 class BestNomadCities::Scraper
 
-  attr_accessor
-
-  def self.get_home_page
+  def get_home_page
     Nokogiri::HTML(open("https://nomadlist.com/"))
   end
 
-  def self.get_cities
+  def get_cities
     self.get_home_page.css("div[data-i]")
   end
 
-  def self.make_cities
+  def make_cities
     self.get_cities.each do |city|
-      City.new_from_home_page(city)
+      BestNomadCities::City.new_from_home_page(city)
     end
   end
   binding.pry
