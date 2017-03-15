@@ -1,20 +1,21 @@
-require_relative '../../config/environment'
+require_relative '../config/environment'
 
 class Scraper
 
-  attr_accessor :home_page, :array
+  attr_accessor
 
   def self.get_home_page
-    @home_page = Nokogiri::HTML(open("https://nomadlist.com/"))
+    Nokogiri::HTML(open("https://nomadlist.com/"))
   end
 
   def self.get_cities
-    @cities_container = @home_page.css("div[data-i]")
+    self.get_home_page.css("div[data-i]")
   end
 
-
-  def self.get_city_travel_guide
-    @city_page = Nokogiri::HTML(open("https://nomadlist.com#{@cities_container[1].css('a').attribute('href').value}/travel-guide" ))
+  def make_cities
+    self.get_cities.each do |city|
+      City.new_from_home_page(city)
+    end
   end
   binding.pry
 end
