@@ -1,6 +1,4 @@
-require_relative '../config/environment'
-
-class Scraper
+class BestNomadCities::Scraper
 
   attr_accessor
 
@@ -12,7 +10,7 @@ class Scraper
     self.get_home_page.css("div[data-i]")
   end
 
-  def make_cities
+  def self.make_cities
     self.get_cities.each do |city|
       City.new_from_home_page(city)
     end

@@ -1,4 +1,4 @@
-class City
+class BestNomadCities::City
   attr_accessor :city_name, :global_rank, :country, :nomad_cost_of_living, :internet_speed, :current_temp, :city_link, :city_travel_guide_link
 
   @@all = []
