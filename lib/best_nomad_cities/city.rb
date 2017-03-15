@@ -1,5 +1,5 @@
 class BestNomadCities::City
-  attr_accessor :city_name, :global_rank, :country, :nomad_cost_of_living, :internet_speed, :current_temp, :city_link, :city_travel_guide_link
+  attr_accessor :name, :global_rank, :country, :nomad_cost_of_living, :internet_speed, :weather, :link, :travel_guide_link
 
   @@all = []
 
@@ -16,15 +16,19 @@ class BestNomadCities::City
     )
   end
 
-  def initialize(city_name = nil, country = nil, global_rank = nil,  nomad_cost_of_living = nil, internet_speed = nil, current_temp = nil, city_link = nil, city_travel_guide_link = nil )
-    @city_name = city_name
+  def initialize(name = nil, country = nil, global_rank = nil,  nomad_cost_of_living = nil, internet_speed = nil, weather = nil, link = nil, travel_guide_link = nil )
+    @name = name
     @country = country
     @global_rank = global_rank
     @nomad_cost_of_living = nomad_cost_of_living
     @internet_speed = internet_speed
-    @current_temp = current_temp
-    @city_link = page_link
-    @city_travel_guide_link = city_travel_guide_link
+    @weather = weather
+    @link = link
+    @travel_guide_link = travel_guide_link
     @@all << self
+  end
+
+  def self.all
+    @@all
   end
 end
