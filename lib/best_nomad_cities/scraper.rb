@@ -1,6 +1,4 @@
-require 'nokogiri'
-require 'open-uri'
-require 'pry'
+require_relative '../../config/environment'
 
 class Scraper
 
@@ -13,11 +11,12 @@ class Scraper
   def self.get_cities
     @cities_container = @home_page.css("div[data-i]")
   end
-  binding.pry
 
-  def get_city_details
 
+  def self.get_city_travel_guide
+    @city_page = Nokogiri::HTML(open("https://nomadlist.com#{@cities_container[1].css('a').attribute('href').value}/travel-guide" ))
   end
+  binding.pry
 end
 
 
