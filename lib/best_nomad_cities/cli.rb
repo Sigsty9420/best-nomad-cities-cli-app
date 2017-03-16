@@ -1,17 +1,45 @@
 class BestNomadCities::CLI
-
   def call
     BestNomadCities::Scraper.new.make_cities
     puts 'Welcome to Best Nomad Cities'
+    start
+  end
+
+  def start
+    puts ''
+    puts 'What would you like to do?'
+    puts ''
+    puts '1. See a ranked list of nomad cities?'
+    puts '2. Search for a city by name?'
+    puts '3. Exit'
+    puts ''
+    choice = gets.strip.to_i
+
+    if choice == 1
+      puts ''
+      puts 'How many cities would you like in your list?'
+      puts ''
+      amount = gets.strip.to_i
+      print_cities(amount)
+    elsif choice == 2
+      puts ''
+      puts "Please enter city name. If located in the US, please add the state if possible. (Example: 'New York, NY')"
+      puts ''
+      search = gets.strip
+      search_city
+    elsif choice == 3
+      puts ''
+      puts "'A good traveller has no fixed plans and is not intent on arriving.' - Lao Tzu"
+      exit
+    end
   end
 
   def print_cities(amount)
-    puts ""
+    puts ''
     puts "---------- Top #{amount} Nomad Cities ----------"
-    puts ""
+    puts ''
     BestNomadCities::City.all[0, amount].each.with_index(1) do |city, index|
       puts "#{index}. #{city.name}, #{city.country}"
     end
   end
-
 end
