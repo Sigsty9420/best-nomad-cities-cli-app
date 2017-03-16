@@ -20,11 +20,11 @@ class BestNomadCities::City
     @name = name
     @country = country
     @rank = rank
-    @cost = nomad_cost_of_living
+    @cost = cost
     @internet_speed = internet_speed
     @weather = weather
     @link = link
-    @tg_link = travel_guide_link
+    @tg_link = tg_link
     @@all << self
   end
 

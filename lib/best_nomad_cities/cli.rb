@@ -26,7 +26,7 @@ class BestNomadCities::CLI
       puts "Please enter city name. If located in the US, please add the state if possible. (Example: 'New York, NY')"
       puts ''
       search = gets.strip
-      search_city(search)
+      search_city_by_name_or_number(search)
       puts ''
       puts "Would you like to see other cities? (Y or N)"
       y_or_n = gets.strip
@@ -36,6 +36,7 @@ class BestNomadCities::CLI
         puts ''
         puts "'Don't listen to what they say. GO SEE!'"
         exit
+      end
     elsif choice == 3
       puts ''
       puts "'A good traveller has no fixed plans and is not intent on arriving.' - Lao Tzu"
@@ -54,13 +55,14 @@ class BestNomadCities::CLI
     BestNomadCities::City.all[0, amount].each.with_index(1) do |city, index|
       puts "#{index}. #{city.name}, #{city.country}"
     end
+    puts ''
   end
 
   def search_city_by_name_or_number(search)
     if search.length > 3
       found_city = BestNomadCities::City.all.select {|city| city.name.start_with?(search)}
     else
-      found_city = BestNomadCities::City.all[search.to_i]
+      found_city = BestNomadCities::City.all[search.to_i-1]
     end
     puts ''
     puts "---------- City: #{found_city.name} ----------"

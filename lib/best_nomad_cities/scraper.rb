@@ -1,7 +1,7 @@
 class BestNomadCities::Scraper
 
   def get_home_page
-    Nokogiri::HTML(open("https://nomadlist.com/"))
+    Nokogiri::HTML(open('fixtures/html/nomadlist.html'))
   end
 
   def get_cities
