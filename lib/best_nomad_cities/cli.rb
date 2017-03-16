@@ -60,7 +60,7 @@ class BestNomadCities::CLI
 
   def search_city_by_name_or_number(search)
     if search.length > 3
-      found_city = BestNomadCities::City.all.select {|city| city.name.start_with?(search)}
+      found_city = BestNomadCities::City.all.detect {|city| city.name.start_with?(search)}
     else
       found_city = BestNomadCities::City.all[search.to_i-1]
     end
