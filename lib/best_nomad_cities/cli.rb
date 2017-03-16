@@ -22,14 +22,14 @@ class BestNomadCities::CLI
       amount = gets.strip.to_i
       print_cities(amount)
       puts ''
-      puts "Please enter city name or number for more information."
+      puts 'Please enter city name or number for more information.'
       search = gets.strip
       search_city_by_name_or_number(search)
       puts ''
-      puts "Would you like to see other cities? (Y or N)"
+      puts 'Would you like to see other cities? (Y or N)'
       puts ''
       y_or_n = gets.strip
-      if y_or_n == "Y"
+      if y_or_n == 'Y'
         start
       else
         puts ''
@@ -38,15 +38,15 @@ class BestNomadCities::CLI
       end
     elsif choice == 2
       puts ''
-      puts "Please enter city name."
+      puts 'Please enter city name.'
       puts ''
       search = gets.strip
       search_city_by_name_or_number(search)
       puts ''
-      puts "Would you like to see other cities? (Y or N)"
+      puts 'Would you like to see other cities? (Y or N)'
       puts ''
       y_or_n = gets.strip
-      if y_or_n == "Y"
+      if y_or_n == 'Y'
         start
       else
         puts ''
@@ -76,9 +76,9 @@ class BestNomadCities::CLI
 
   def search_city_by_name_or_number(search)
     if search.length > 3
-      found_city = BestNomadCities::City.all.detect {|city| city.name.start_with?(search)}
+      found_city = BestNomadCities::City.all.detect { |city| city.name.start_with?(search) }
     else
-      found_city = BestNomadCities::City.all[search.to_i-1]
+      found_city = BestNomadCities::City.all[search.to_i - 1]
     end
     puts ''
     puts "---------- City: #{found_city.name} ----------"
@@ -92,6 +92,5 @@ class BestNomadCities::CLI
     puts "Link to travel guide:     #{found_city.tg_link}"
     puts ''
     puts "Hold 'cmd' on Mac to click the links."
-
   end
 end
