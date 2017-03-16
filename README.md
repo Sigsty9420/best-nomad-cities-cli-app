@@ -8,7 +8,7 @@ The CLI features a ranked list of cities. Individual cities can be selected or s
 
 ## Installation
 
-  $ gem install best-nomad-cities-cli-app
+  $ gem install best-nomad-cities
 
 ## Usage
 
