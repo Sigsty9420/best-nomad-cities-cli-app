@@ -10,7 +10,7 @@ class BestNomadCities::CLI
     puts "---------- Top #{amount} Nomad Cities ----------"
     puts ""
     BestNomadCities::City.all[0, amount].each.with_index(1) do |city, index|
-      puts "#{index}. #{city.city_name}, #{city.country}"
+      puts "#{index}. #{city.name}, #{city.country}"
     end
   end
 
