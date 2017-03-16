@@ -21,14 +21,30 @@ class BestNomadCities::CLI
       puts ''
       amount = gets.strip.to_i
       print_cities(amount)
+      puts ''
+      puts "Please enter city name or number for more information."
+      search = gets.strip
+      search_city_by_name_or_number(search)
+      puts ''
+      puts "Would you like to see other cities? (Y or N)"
+      puts ''
+      y_or_n = gets.strip
+      if y_or_n == "Y"
+        start
+      else
+        puts ''
+        puts "'Don't listen to what they say. GO SEE!'"
+        exit
+      end
     elsif choice == 2
       puts ''
-      puts "Please enter city name. If located in the US, please add the state if possible. (Example: 'New York, NY')"
+      puts "Please enter city name."
       puts ''
       search = gets.strip
       search_city_by_name_or_number(search)
       puts ''
       puts "Would you like to see other cities? (Y or N)"
+      puts ''
       y_or_n = gets.strip
       if y_or_n == "Y"
         start
@@ -67,13 +83,13 @@ class BestNomadCities::CLI
     puts ''
     puts "---------- City: #{found_city.name} ----------"
     puts ''
-    puts "Global nomad rank:            #{found_city.rank}"
-    puts "Country:                #{found_city.country}"
-    puts "Nomad cost:             #{found_city.cost}"
-    puts "Internet speed:         #{found_city.internet_speed}"
-    puts "Weather (now):          #{found_city.weather}"
-    puts "Link to city page:      #{found_city.link}"
-    puts "Link to travel guide:   #{found_city.tg_link}"
+    puts "Global nomad rank:        #{found_city.rank}"
+    puts "Country:                  #{found_city.country}"
+    puts "Nomad cost:               #{found_city.cost}"
+    puts "Internet speed:           #{found_city.internet_speed}"
+    puts "Weather (now):            #{found_city.weather}"
+    puts "Link to city page:        #{found_city.link}"
+    puts "Link to travel guide:     #{found_city.tg_link}"
     puts ''
     puts "Hold 'cmd' on Mac to click the links."
 

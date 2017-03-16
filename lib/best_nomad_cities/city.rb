@@ -11,8 +11,8 @@ class BestNomadCities::City
     city.css(".bottom-right").text,
     city.css(".top-right").text,
     "#{city.css(".metric").text} / #{city.css(".imperial").text}",
-    "https://nomadlist.com#{city.css('a').attribute('href').value}",
-    "https://nomadlist.com#{city.css('a').attribute('href').value}/travel-guide"
+    city.css('a').attribute('href').value,
+    "#{city.css('a').attribute('href').value}/travel-guide"
     )
   end
 
