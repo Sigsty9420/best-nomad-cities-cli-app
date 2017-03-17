@@ -4,27 +4,29 @@ class BestNomadCities::City
   @@all = []
 
   def self.new_from_home_page(city)
-    self.new(
-    city.css("h2").text,
-    city.css("h3").text,
-    city.css(".rank").text,
-    city.css(".bottom-right").text,
-    city.css(".top-right").text,
-    "#{city.css(".metric").text} / #{city.css(".imperial").text}",
-    city.css('a').attribute('href').value,
-    "#{city.css('a').attribute('href').value}/travel-guide"
-    )
+    attrs = {
+      name: city.css("h2").text,
+      country: city.css("h3").text,
+      rank: city.css(".rank").text,
+      cost: city.css(".bottom-right").text,
+      internet_speed: city.css(".top-right").text,
+      weather: "#{city.css(".metric").text} / #{city.css(".imperial").text}",
+      link: city.css('a').attribute('href').value,
+      tg_link: "#{city.css('a').attribute('href').value}/travel-guide"
+    }
+
+    self.new(attrs)
   end
 
-  def initialize(name = nil, country = nil, rank = nil,  cost = nil, internet_speed = nil, weather = nil, link = nil, tg_link = nil )
-    @name = name
-    @country = country
-    @rank = rank
-    @cost = cost
-    @internet_speed = internet_speed
-    @weather = weather
-    @link = link
-    @tg_link = tg_link
+  def initialize(attrs)
+    @name = attrs[:name]
+    @country = attrs[:country]
+    @rank = attrs[:rank]
+    @cost = attrs[:cost]
+    @internet_speed = attrs[:internet_speed]
+    @weather = attrs[:weather]
+    @link = attrs[:link]
+    @tg_link = attrs[:tg_link]
     @@all << self
   end
 

@@ -4,6 +4,8 @@ This Ruby App provides a CLI to view the top cities to live in for a "digital no
 
 All credit for the data goes to Pieter Levels who started http://nomadlist.com
 
+After a few days some changes took place on the NomadList homepage which broke the scraper, so I decided to scrape a local html backup I had made.
+
 The CLI features a ranked list of cities. Individual cities can be selected or searched for to view a summary of relevant metrics.
 
 ## Installation
