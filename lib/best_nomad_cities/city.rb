@@ -3,21 +3,6 @@ class BestNomadCities::City
 
   @@all = []
 
-  def self.new_from_home_page(city)
-    attrs = {
-      name: city.css("h2").text,
-      country: city.css("h3").text,
-      rank: city.css(".rank").text,
-      cost: city.css(".bottom-right").text,
-      internet_speed: city.css(".top-right").text,
-      weather: "#{city.css(".metric").text} / #{city.css(".imperial").text}",
-      link: city.css('a').attribute('href').value,
-      tg_link: "#{city.css('a').attribute('href').value}/travel-guide"
-    }
-
-    self.new(attrs)
-  end
-
   def initialize(attrs)
     @name = attrs[:name]
     @country = attrs[:country]
@@ -32,5 +17,11 @@ class BestNomadCities::City
 
   def self.all
     @@all
+  end
+
+  def self.sort_by_cost
+    @@all.sort! do |a,b|
+      b.cost.scan(/\d/).join('').to_i <=> a.cost.scan(/\d/).join('').to_i
+    end
   end
 end
